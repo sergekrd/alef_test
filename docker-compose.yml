@@ -6,13 +6,12 @@ services:
     build:
       context: .
     env_file:
-      - .development.env
+      - .env
     volumes:
       - .:/src
       - /app/node_modules
     ports:
-      - 5004:5004
-      - 9229:9229
+      - 5020:5020
     command: npm run start:docker
     depends_on:
       - postgres
