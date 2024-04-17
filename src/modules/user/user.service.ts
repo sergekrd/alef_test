@@ -78,7 +78,7 @@ export class UserService {
   public async patchChild(userId: string, childId: number, dto: ChildInput): Promise<ChildOutput> {
     const child = await this.prisma.childs.findFirst({ where: { parent_id: userId, id: childId } });
     if (!child)
-      throw new CustomError(HttpStatus.BAD_REQUEST, "You are not this parent of this child");
+      throw new CustomError(HttpStatus.BAD_REQUEST, "You are not the parent of this child");
     return this.prisma.childs.update({
       where: { parent_id: userId, id: childId },
       data: dto,
